@@ -25,16 +25,15 @@ flowchart TD
     style D fill:#ffc,stroke:#333,stroke-width:2px,stroke-dasharray: 5 2
 
     %% Nodos
-    A([Open WebUI<br>(Frontend UI)])
-    B((Ollama<br>(Local LLM)))
-    C([deepseek-coder:6.7b<br>Code generation, Odoo, Python])
-    D([llama3:8b<br>General explanations, teaching])
+    A["Open WebUI\n(Frontend UI)"]
+    B(("Ollama\n(Local LLM)"))
+    C["deepseek-coder:6.7b\nCode generation, Odoo, Python"]
+    D["llama3:8b\nGeneral explanations, teaching"]
 
     %% Flechas con etiquetas
     A -->|Envía solicitudes de texto| B
     B -->|Genera código y ayuda técnica| C
     B -->|Genera explicaciones y enseñanza| D
-
 ```
 
 ---## Setup Instructions
