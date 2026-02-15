@@ -18,22 +18,23 @@ This stack is ideal for:
 
 ```mermaid
 flowchart TD
-                   +----------------+
-                   |   Open WebUI   |
-                   | (Frontend UI)  |
-                   +-------+--------+
-                           |
-                           v
-                   +----------------+
-                   |     Ollama     |
-                   |  (Local LLM)  |
-                   +-------+--------+
-                           |
-           +---------------+----------------+
-           |                                |
-           v                                v
-deepseek-coder:6.7b                  llama3:8b
-(Code generation, Odoo, Python)      (General explanations, teaching)]
+    %% Estilos de nodos
+    style A fill:#f9f,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
+    style B fill:#9cf,stroke:#333,stroke-width:2px,stroke-dasharray: 0
+    style C fill:#cfc,stroke:#333,stroke-width:2px,stroke-dasharray: 5 2
+    style D fill:#ffc,stroke:#333,stroke-width:2px,stroke-dasharray: 5 2
+
+    %% Nodos
+    A([Open WebUI<br>(Frontend UI)])
+    B((Ollama<br>(Local LLM)))
+    C([deepseek-coder:6.7b<br>Code generation, Odoo, Python])
+    D([llama3:8b<br>General explanations, teaching])
+
+    %% Flechas con etiquetas
+    A -->|Envía solicitudes de texto| B
+    B -->|Genera código y ayuda técnica| C
+    B -->|Genera explicaciones y enseñanza| D
+
 ```
 
 ---## Setup Instructions
@@ -45,7 +46,7 @@ deepseek-coder:6.7b                  llama3:8b
     ```
 2. **Start the Containers**  
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 3. **Access the WebUI**  
    Open your browser and navigate to `http://localhost:3000` to access the Open WebUI interface.
@@ -60,7 +61,7 @@ deepseek-coder:6.7b                  llama3:8b
 5. **Stop the Containers**  
    When you're done, you can stop the containers with:  
    ```bash
-   docker-compose down
+   docker compose down
    ```
 ---## License MIT License
 ---## Author
