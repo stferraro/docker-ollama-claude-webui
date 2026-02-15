@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# Logs
+*.log
+logs/
+*.pid
+
+# Docker
+*.env
+.env
+docker-data/
+ollama-data/
+openwebui-data/
+
+# Python
+__pycache__/
+*.pyc
+
+# VSCode
+.vscode/
+
+# Temporary
+tmp/
+.cache/
+ollama/data/
+openwebui/data/
