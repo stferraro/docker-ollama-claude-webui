@@ -1,0 +1,40 @@
+services:
+
+  ollama:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: openwebui
+    depends_on:
+      - ollama
+    ports:
+      - "3000:8080"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    volumes:
+      - openwebui-data:/app/backend/data
+    restart: unless-stopped
+
+volumes:
+  ollama-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./ollama/data
+      o: bind
+
+  openwebui-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./openwebui/data
+      o: bind
